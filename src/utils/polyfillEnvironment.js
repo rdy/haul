@@ -32,11 +32,13 @@ if (!global.self) {
   global.self = global; /* eslint-disable-line */
 }
 
-require('InitializeCore'); // eslint-disable-line import/no-unresolved
+require('react-native/Libraries/Core/InitializeCore'); // eslint-disable-line import/no-unresolved
 
 require('../hot/client/importScriptsPolyfill');
 
-const scriptURL = require('react-native').NativeModules.SourceCode.scriptURL; // eslint-disable-line import/no-unresolved
+const {
+  NativeModules: { SourceCode: { scriptURL } },
+} = require('react-native');
 // In order to ensure hot client has a valid URL we need to get a valid origin
 // from URL from which the bundle was loaded. When using iOS simulator/Android emulator
 // or Android device it will be `localhost:<port>` but when using real iOS device
