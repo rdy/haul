@@ -6,6 +6,7 @@
  *
  * This file is loaded as a part of user bundle
  */
+import { NativeModules } from 'react-native';
 
 /* eslint-disable import/no-extraneous-dependencies */
 require('../../vendor/polyfills/console.js')(global);
@@ -32,11 +33,11 @@ if (!global.self) {
   global.self = global; /* eslint-disable-line */
 }
 
-require('InitializeCore'); // eslint-disable-line import/no-unresolved
+require('react-native/Libraries/Core/InitializeCore');
 
 require('../hot/client/importScriptsPolyfill');
 
-const scriptURL = require('react-native').NativeModules.SourceCode.scriptURL; // eslint-disable-line import/no-unresolved
+const { scriptURL } = NativeModules.SourceCode;
 // In order to ensure hot client has a valid URL we need to get a valid origin
 // from URL from which the bundle was loaded. When using iOS simulator/Android emulator
 // or Android device it will be `localhost:<port>` but when using real iOS device
