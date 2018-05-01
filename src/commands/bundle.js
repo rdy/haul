@@ -14,6 +14,7 @@ const { MessageError } = require('../errors');
 const messages = require('../messages');
 const { makeReactNativeConfig } = require('../utils/makeReactNativeConfig');
 const getWebpackConfig = require('../utils/getWebpackConfig');
+const { extraPlatformsDescriptions } = require('../utils/loadRnCli');
 const logger = require('../logger');
 
 /**
@@ -143,6 +144,7 @@ module.exports = ({
           value: 'android',
           description: 'Builds Android bundle',
         },
+        ...extraPlatformsDescriptions(),
       ],
       example: 'haul bundle --platform ios',
     },
